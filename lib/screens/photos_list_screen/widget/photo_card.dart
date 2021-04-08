@@ -57,6 +57,7 @@ class PhotoCard extends StatelessWidget {
                       Text(
                         imageAuthor,
                         style: mainTextStyle,
+
                       )
                     ],
                   ),
