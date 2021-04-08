@@ -7,11 +7,13 @@ class PhotoCard extends StatelessWidget {
     this.imageUrl,
     this.imageName,
     this.imageAuthor,
+    this.navigateToPhotoDetailsScreen,
   }) : super(key: key);
 
   final String imageUrl;
   final String imageName;
   final String imageAuthor;
+  final Function(String imageUrl) navigateToPhotoDetailsScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -19,50 +21,52 @@ class PhotoCard extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Stack(
         children: [
-          Container(
-            height: 500,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(16),
+          GestureDetector(
+            onTap: () => navigateToPhotoDetailsScreen(imageUrl),
+            child: Container(
+              height: 500,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
+                ),
+                boxShadow: [
+                  BoxShadow(blurRadius: 10, color: Colors.black.withOpacity(0.8)),
+                ],
               ),
-              boxShadow: [
-                BoxShadow(blurRadius: 10,
-                color: Colors.black.withOpacity(0.8)),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(
-                Radius.circular(16),
-              ),
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.fitWidth,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
+                ),
+                child: Image.network(
+                  imageUrl,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             ),
           ),
           Positioned(
-              bottom: 0,
-              left: 0,
-              child: Container(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        imageName,
-                        style: mainTextStyle,
-                      ),
-                      Text(
-                        imageAuthor,
-                        style: mainTextStyle,
-
-                      )
-                    ],
-                  ),
+            bottom: 0,
+            left: 0,
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text(
+                      imageName,
+                      style: mainTextStyle,
+                    ),
+                    Text(
+                      imageAuthor,
+                      style: mainTextStyle,
+                    ),
+                  ],
                 ),
-              ))
+              ),
+            ),
+          ),
         ],
       ),
     );
