@@ -24,7 +24,6 @@ class PhotoCard extends StatelessWidget {
           GestureDetector(
             onTap: () => navigateToPhotoDetailsScreen(imageUrl),
             child: Container(
-              height: 500,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -40,7 +39,7 @@ class PhotoCard extends StatelessWidget {
                 ),
                 child: Image.network(
                   imageUrl,
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),
@@ -48,11 +47,12 @@ class PhotoCard extends StatelessWidget {
           Positioned(
             bottom: 0,
             left: 0,
-            child: Container(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                width: 200,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       imageName,
@@ -60,7 +60,7 @@ class PhotoCard extends StatelessWidget {
                     ),
                     Text(
                       imageAuthor,
-                      style: mainTextStyle,
+                      style: mainTextStyle.copyWith(fontSize: 16),
                     ),
                   ],
                 ),

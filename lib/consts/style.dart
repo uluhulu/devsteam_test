@@ -1,14 +1,15 @@
 import 'package:devsteam_test/consts/colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 final mainTextStyle = TextStyle(
   fontSize: 24,
   color: textColor,
   shadows: <Shadow>[
     Shadow(
-      offset: Offset(5.0, 5.0),
-      blurRadius: 3.0,
-      color: Color.fromARGB(255, 0, 0, 0),
+      offset: Offset(1,1),
+      blurRadius: 5,
+      color: Colors.black.withOpacity(0.8),
     ),
   ],
 );
